@@ -39,7 +39,9 @@ function rendHtml(url,obj){
 // })
 
 //等价于上面的代码
+//创建一个服务
 const server = http.createServer();
+//绑定request监听，监听客户端请求
 server.on('request',(req,res)=>{
   // console.log(req)
   console.log('请求地址：',req.url)
@@ -72,7 +74,7 @@ server.on('request',(req,res)=>{
 //①、前端新建script请求；②、后端返回一个函数调用
 //方式二：cors:后端设置"access-control-allow-origin":'*'
 
-
+//启动服务
 server.listen(3000,()=>{
   console.log('server start, 监听3000的端口')
 })
