@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      .main{
-        padding:10px;
-        margin:10px;
-        border:1px solid rgb(82, 79, 236);
-      }
-    </style>
-  </head>
 
-  <body>
-    <div class="main">
-        主页面问题
-    </div>
-    <script>
       var sc = document.createElement('script');
       sc.src='http://192.168.100.155:3000/jsonp?callback=call'
       document.body.appendChild(sc)
@@ -32,6 +16,4 @@
       }
       xhr.open('GET','http://127.0.0.1:3000/list',true)
       xhr.send();
-    </script>
-  </body>
-</html>
+    
