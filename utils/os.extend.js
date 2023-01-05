@@ -22,3 +22,19 @@ console.log(pf);//win32或win64
 const dir = os.tmpdir();
 console.log(dir)
 
+//获取ip地址
+function getLocalIp(){
+  const network = os.networkInterfaces();
+  for(let devName in network){
+    let id = network[devName];
+    for(let i=0;i<id.length;i++){
+      let alias = id[i];
+
+      if(alias.family==='IPv4'&&alias.address!=='127.0.0.1'&&!alias.internal){
+        return alias.address;
+      }
+    }
+  }
+}
+const localIp = getLocalIp();
+console.log(localIp)
