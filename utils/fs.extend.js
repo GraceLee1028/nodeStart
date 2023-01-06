@@ -36,22 +36,6 @@ fs.rmdir('config',(err)=>{
   console.log('成功删除目录config')
 })
 
-
-//writeFile：创建或者重写文件；【wbepack.config.js不存在时创建，存在时重写】
-fs.writeFile('config/wbepack.config.js','const path = require("path")',(err)=>{
-  if(err){
-    return console.log(err)
-  }
-  console.log('写入成功wbepack.config.js')
-})
-
-// stat()：查看目录的信息
-fs.stat('config',(err,stats)=>{
-  if(err){
-    throw err;
-  }
-  console.log('成功读取目录config的信息',stats)
-})
 //读取文件内容
 fs.readFile('public/text.txt','utf-8',(err,data)=>{
   if(err){
@@ -60,6 +44,22 @@ fs.readFile('public/text.txt','utf-8',(err,data)=>{
   }
   console.log('读取成功',data)
 })
+//writeFile：创建或者重写文件；【wbepack.config.js不存在时创建，存在时重写】
+// fs.writeFile('config/wbepack.config.js','const path = require("path")',(err)=>{
+//   if(err){
+//     return console.log(err)
+//   }
+//   console.log('写入成功wbepack.config.js')
+// })
+
+// stat()：查看目录的信息
+// fs.stat('config',(err,stats)=>{
+//   if(err){
+//     throw err;
+//   }
+//   console.log('成功读取目录config的信息',stats)
+// })
+
 
 //unlink：删除文件[异步]，unlinkSync：同步
 // fs.unlink(path.join('public/text.txt'),(err)=>{
