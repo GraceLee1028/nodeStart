@@ -1,2 +1,3 @@
 /node_modules/
+/myApp/node_modules/
 .env
