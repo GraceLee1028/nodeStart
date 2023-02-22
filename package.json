@@ -7,7 +7,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.14.0",
     "fcc-express-bground": "https://github.com/freeCodeCamp/fcc-express-bground-pkg.git",
-    "lee-tool": "^1.0.0"
+    "lee-tool": "^1.0.1"
   },
   "main": "server.js",
   "scripts": {
