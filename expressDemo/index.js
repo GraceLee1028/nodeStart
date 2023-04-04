@@ -1,7 +1,5 @@
 const express = require("express")
-const path = require("path");
 const app = express();
-const qs = require("querystring")//内置对象:解析查询字符串的数据
 const bodyParser = require("./middleware/custom-body-parse");
 //全局中间件
 const loggerMiddleware = function(req,res,next){
