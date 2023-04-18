@@ -33,3 +33,8 @@ cors({
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 })
 ```
+
+# 当前用到的依赖
+## querystring
+## body-parse
+## cors
