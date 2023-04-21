@@ -1,0 +1,8 @@
+{
+  "name":"zhyx-tool",
+  "version":"1.0.1",
+  "main":"index.js",
+  "description": "常用的公共函数方法",
+  "keywords": ["zhyx-tool","lee"],
+  "license": "ISC"
+}

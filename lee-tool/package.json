@@ -1,8 +1,0 @@
-{
-  "name":"lee-tool",
-  "version":"1.0.1",
-  "main":"index.js",
-  "description": "常用的数据处理方法",
-  "keywords": ["lee-tool","lee"],
-  "license": "ISC"
-}
