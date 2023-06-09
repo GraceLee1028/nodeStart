@@ -12,7 +12,7 @@ const mw1 = function(req,res,next){
 router.get('/user/info',mw1,function(req,res){
   throw new Error("未授权")
   res.send('请求时间为：'+req.startTime);
-  console.log('ces')
+  //console.log('ces')
   res.send('getInfo')
 })
 router.post('/user/info',function(req,res){
