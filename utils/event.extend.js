@@ -33,7 +33,9 @@ emitterOne.once("newListener",function(event,listener){
   }
 })
 
-
+//列出已经注册监听器的数组
+const eventNames = emitterOne.eventNames();
+console.log("输出监听器的事件的数组：",eventNames);
 
 
 
