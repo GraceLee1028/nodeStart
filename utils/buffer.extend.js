@@ -86,3 +86,14 @@ const copyBuffer = Buffer.alloc(bufferCopy1.length+bufferCopy2.length)
 bufferCopy1.copy(copyBuffer,0,0,1)//将bufferCopy1的h拷贝插入到copyBuffer指定位置0
 bufferCopy1.copy(copyBuffer,1,1,2)//将bufferCopy1的e拷贝插入到copyBuffer指定位置1
 console.log("copy()==========",copyBuffer.toString())//结果为he
+
+//7、实际的字节长度：byteLength():一个英文字母字节长度为1，一个中文汉字字节长度为3
+console.log("bufferLength():获取长度===================")
+const nameBuf =  Buffer.alloc(10);
+nameBuf.write("byteLength")
+const nameBuf2 = Buffer.from("女性主义")
+console.log('nameBuf字符串的字节长度:',Buffer.byteLength(nameBuf));
+console.log("nameBuf的实际内容为：",nameBuf.toString())
+console.log("nameBuf2字符串的字节长度,一个中文有3个字节",Buffer.byteLength(nameBuf2))
+console.log("nameBuf2的实际内容为：",nameBuf2.toString())
+
