@@ -37,5 +37,14 @@ emitterOne.once("newListener",function(event,listener){
 const eventNames = emitterOne.eventNames();
 console.log("输出监听器的事件的数组：",eventNames);
 
-
-
+//返回最大监听器限制值
+function getMax(em){
+  return em.getMaxListeners();
+}
+const maxListenerNumber = getMax(emitterOne)
+console.log("最大监听器限制值：",maxListenerNumber)
+function getCurrentCount(em){
+  return em.listenerCount()
+}
+const currentCount = getCurrentCount(emitterOne);
+console.log("当前",currentCount)
