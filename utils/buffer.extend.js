@@ -1,15 +1,19 @@
 // 1、字符串和buffer的转换
-const str = 'hello'
+const str = 'hello1'
 //将字符串保存在buffer中,转为二进制来保存
 const buffer = Buffer.from(str);
 console.log(str.length)
 console.log(buffer.length)
 //将二进制转为utf-8的字符串
 console.log(buffer.toString('utf-8'))
+console.log(buffer.toString('base64'))
+
 console.log(buffer)
 const name = "钟离野"
 const nameBuffer = Buffer.from(name,"utf8");
 console.log("name的buffer值：",nameBuffer)
+console.log("name的buffer长度：",nameBuffer.length)
+
 console.log("toString()的值",nameBuffer.toString())
 //base64的值
 const nameBase64 = nameBuffer.toString("base64")
@@ -33,7 +37,7 @@ const headBuffer = Buffer.alloc(4);
 const headBufferLength = headBuffer.write("12345")
 console.log(headBufferLength)
 console.log(headBuffer)
-console.log("headBuffer",headBuffer.toString())
+console.log("headBuffer toString()真实数据：",headBuffer.toString())
 console.log("======================================================")
 const jsonStr = JSON.stringify({"base_info":{"id":"1460430637138726917","patientSex":1,"name":"吴继先","patient_id":"3001049","birthday":"1952-05-13","id_card":"230104195205130930","department":"重症医学科","department_code":"1858","outpatient_no":null,"outpatient_pipeline_no":null,"inhospital_no":"550542","inhospital_pipeline_no":"IP0000013885","inpatient_time":"2021-11-12 08:16:27","out_time":null,"charge_doctor":"李焱","charge_doctor_num":"101437","dept_name":"重症医学科","dept_code":"1858","disease_name":"高血压3级","diseaseIcd":"I10.x05","age":null,"ageUnit":null,"height":null,"weight":null,"inHospitalDiagnosis":"高血压3级、牙髓坏死、颌骨肿物、上消化道出血、反流性食管炎、1型糖尿病、眼鼠疫","examine_name":"★血常规(五分类静脉血)","examine_code":"JY21187","examine_date":"2022-09-21 07:00:06","disease_code":"I10.x05","disease_icd":"I10.x05"},"examine_list":[{"primaryId":"1657611159984","reportId":"1615364197028","reportHisExamineCode":"JY21187","reportHisExamineName":"★血常规(五分类静脉血)","examineCode":"JY21187","examineName":"★血常规(五分类静脉血)","examineSubitemsName":"嗜酸性粒细胞百分数","examineSubitemsCode":"A4018","hisExamineCode":"JY21187","examineSubitemsValue":"10","normalValue":"0.4-8.0","examineSubitemsUnit":"","abnormalValueType":null,
 "crisisvalValue":null,"createTime":"2022-08-25 07:00:06","examineValueChange":null,"examineTime":"2022-09-21 07:00:06"},{"primaryId":"1657611159984","reportId":"1615364197028","reportHisExamineCode":"JY21187","reportHisExamineName":"★血常规(五分类静脉血)","examineCode":"JY21187","examineName":"★血常规(五分类静脉血)","examineSubitemsName":"淋巴细胞百分数","examineSubitemsCode":"A4016","hisExamineCode":"JY21187","examineSubitemsValue":"10","normalValue":"20.0-50","examineSubitemsUnit":"","abnormalValueType":null,"crisisvalValue":null,"createTime":"2022-08-25 07:00:06","examineValueChange":null,"examineTime":"2022-09-21 07:00:06"},{"primaryId":"1657611159984","reportId":"1615364197028","reportHisExamineCode":"JY21187","reportHisExamineName":"★血常规(五分类静脉血)","examineCode":"JY21187","examineName":"★血常规(五分类静脉血)","examineSubitemsName":"中性粒细胞绝对值","examineSubitemsCode":"A4020","hisExamineCode":"JY21187","examineSubitemsValue":"10","normalValue":"10-50","examineSubitemsUnit":"","abnormalValueType":null,"crisisvalValue":null,"createTime":"2022-08-25 07:00:06","examineValueChange":null,"examineTime":"2022-09-21 07:00:06"},{"primaryId":"1657611159984","reportId":"1615364197028","reportHisExamineCode":"JY21187","reportHisExamineName":"★血常规(五分类静脉血)","examineCode":"JY21187",

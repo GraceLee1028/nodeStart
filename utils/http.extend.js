@@ -3,43 +3,45 @@
  */
 const http = require('http');
 const url = require('url');
-const fs  = require('fs');
+const fs = require('fs');
 const path = require('path');
 
-// function getStatus(url){
-//   let status=['/','/list','/jsonp'].includes(url)?200:404
-//   return status;
-// }
-// function rendHtml(url,obj){
-//   let html=''
-//   switch(url){
-//     case '/':
-//       html = '<h1>首页</h1>'
-//       break;
-//     case '/list':
-//       html = '<h1>列表页面</h1>'
-//       break;
-//     case '/jsonp'://Content-Type不能是text/html,不然该接口会报错
-//       html = `${obj.callback}(${JSON.stringify({name:'lee'})})`
-//       break;
-//   }
-//   return html;
-// }
+function getStatus(url) {
+  let status = ['/', '/list', '/jsonp'].includes(url) ? 200 : 404;
+  return status;
+}
+function rendHtml(url, obj) {
+  let html = '';
+  switch (url) {
+    case '/':
+      html = '<h1>首页</h1>';
+      break;
+    case '/list':
+      html = '<h1>列表页面</h1>';
+      break;
+    case '/jsonp': //Content-Type不能是text/html,不然该接口会报错
+      html = `${obj.callback}(${JSON.stringify({ name: 'lee' })})`;
+      break;
+  }
+  return html;
+}
 //创建服务器
-// http.createServer((req,res)=>{
-//   // console.log(req)
-//   console.log('请求地址：',req.url)
-//   console.log('请求方法：',req.method)
-//   const url = req.url;
-//   //中文需要配置charset=UTF8,避免乱码
-//   //设置响应头
-//   res.writeHead(getStatus(url),{'Content-Type':'text/html;charset=utf-8'})
-//   const html = rendHtml(url);
-//   res.write(html)
-//   res.end();//通知浏览器结束请求
-// }).listen(3000,()=>{
-//   console.log('server start')
-// })
+// http
+//   .createServer((req, res) => {
+//     // console.log(req)
+//     console.log('请求地址：', req.url);
+//     console.log('请求方法：', req.method);
+//     const url = req.url;
+//     //中文需要配置charset=UTF8,避免乱码
+//     //设置响应头
+//     res.writeHead(getStatus(url), { 'Content-Type': 'text/html;charset=utf-8',"Access-Control-Allow-Origin":'*' });
+//     const html = rendHtml(url);
+//     res.write(html);
+//     res.end(); //通知浏览器结束请求
+//   })
+//   .listen(3000, () => {
+//     console.log('server start');
+//   });
 
 //等价于上面的代码
 // //创建一个服务
@@ -82,26 +84,32 @@ const path = require('path');
 //   console.log('server start, 监听3000的端口')
 // })
 
-// 根据main.html请求返回相应的app;
+//请求地址返回不同内容
 
+// 请求文件内容
 const server = http.createServer();
-const sourse = function(pathStr){
-  return path.join(__dirname,'../',pathStr)
-}
-server.on('request',function(req,res){
+const sourse = function (pathStr) {
+  return path.join(__dirname, 'dist', pathStr);
+};
+server.on('request', function (req, res) {
   const reqUrl = req.url;
-  console.log(reqUrl)
-  fs.readFile(sourse(reqUrl),'utf8',function(err,data){
-    console.log(err)
-    if(err){
+  console.log('request url is :  ' + reqUrl);
+  let url = '';
+  if (reqUrl === '/') {
+    url = '/index.html';
+  }
+  fs.readFile(sourse(url), 'utf8', function (err, data) {
+    console.log(err);
+    if (err) {
       console.log('该地址不存在');
-      data = '404'
+      data = '404';
+      return;
     }
+    console.log('content is ', data);
     res.end(data);
-  })
+  });
 });
 
-server.listen(3000,function(){
-  console.log('开启监听，127.0.0.1:3000')
-})
-
+server.listen(3000, function () {
+  console.log('开启监听，127.0.0.1:3000');
+});

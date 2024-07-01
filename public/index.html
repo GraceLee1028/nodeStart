@@ -2,35 +2,35 @@
 <html>
   <head>
     <style>
-      .main{
-        padding:10px;
-        margin:10px;
-        border:1px solid rgb(82, 79, 236);
+      .main {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid rgb(82, 79, 236);
       }
     </style>
   </head>
 
   <body>
-    <div class="main">
-        主页面问题
-    </div>
+    <div class="main">主页面问题</div>
     <script>
       var sc = document.createElement('script');
-      sc.src='http://192.168.100.155:3000/jsonp?callback=call'
-      document.body.appendChild(sc)
-      function call(data){
-        console.log('后端通过jsonp调用了回调')
-        console.log('后端返回的数据',data)
+      //回调
+      sc.src = 'http://http://192.168.100.232:3000/jsonp?callback=call';
+      document.body.appendChild(sc);
+      function call(data) {
+        console.log('后端通过jsonp调用了回调');
+        console.log('后端返回的数据', data);
       }
+      //简单请求
       var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function(){
-        if(xhr.readyState===4&&xhr.status===200){
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
           var txt = xhr.responseText;
-          console.log('跨域请求：',txt)
-          document.write(txt)
+          console.log('跨域请求：', txt);
+          document.write(txt);
         }
-      }
-      xhr.open('GET','http://127.0.0.1:3000/list',true)
+      };
+      xhr.open('GET', 'http://127.0.0.1:3000/list', true);
       xhr.send();
     </script>
   </body>
