@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const logMw = require('./modules/log');
+const statusMw = require('./modules/status');
+
 const app = express();
 const port = 9000;
 //静态文件访问
@@ -8,7 +10,7 @@ const port = 9000;
 // app.use(express.static(path.resolve(__dirname, 'dist')));
 //访问路径：http://localhost:9000/static/index.html
 app.use(logMw.start);
-
+app.use(statusMw.auth);
 app.use('/static', express.static(path.resolve(__dirname, 'dist')));
 //路由
 app.get('/readme', function (req, res) {
@@ -27,7 +29,7 @@ app.get('/userInfo/:userId', function (req, res) {
 const cb1 = function (req, res, next) {
   console.log('001============the response will be sent by the next function ...');
   console.log(req.url);
-  next('route'); //跳过剩余的中间件
+  next('route'); //跳过剩余的中间件cb2
 };
 const cb2 = function (req, res, next) {
   console.log('002=============the response will be sent by the next function ...');
@@ -37,6 +39,7 @@ const cb2 = function (req, res, next) {
 app.get('/example/a', cb1, function (req, res) {
   res.send('Hello from A!');
 });
+//因为cb1的next('route');会跳过剩余的中间件cb2
 app.get('/example/b', [cb1, cb2], function (req, res) {
   res.send('Hello from B!');
 });
@@ -51,6 +54,14 @@ app
   .put(function (req, res) {
     res.send('update the user');
   });
+const cb3 = function (req, res, next) {
+  const error = new Error('error page');
+  next(error);
+};
+app.get('/error', cb3, function (req, res) {
+  res.status(res.responseStatus).send(res.responseText);
+});
+app.use(statusMw.error);
 app.use(logMw.end);
 
 app.listen(port, () => {

@@ -9,7 +9,6 @@ function start(req, res, next) {
 function end(req, res, next) {
   const url = req.url;
   req.reponseTime = Date.now();
-  console.log('request url：', url);
   console.log(`reponse time :${req.reponseTime}`);
   next();
 }
