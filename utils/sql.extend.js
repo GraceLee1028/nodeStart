@@ -45,11 +45,21 @@ const db = sql.createPool({
 // });
 
 //查询数据
-const sqlStr = 'select * from my_schema.user;';
-db.query(sqlStr, (err, result) => {
+// const sqlStr = 'select * from my_schema.user;';
+// db.query(sqlStr, (err, result) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   console.log(result);
+// });
+
+//join
+const joinInner = 'select * from my_schema.user';
+db.query(joinInner, function (err, result) {
   if (err) {
     console.error(err);
     return;
   }
-  console.log(result);
+  console.log(result, '============');
 });
