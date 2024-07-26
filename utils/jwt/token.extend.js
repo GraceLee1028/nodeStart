@@ -20,7 +20,7 @@ app.use(bodyParser.json()); //application/json
 app.use(bodyParser.urlencoded({ extended: false })); //application/x-www-form-urlencoded
 app.use(cors());
 //配置jwt验证
-app.use(expressjwt({ secret: secretKey, algorithms: ['HS256'] })).unless({ path: [/^\/api/] });
+app.use(expressjwt({ secret: secretKey, algorithms: ['HS256'] }).unless({ path: [/^\/api/] }));
 app.use(auth.errorToken);
 app.use('/api/login', loginRouter);
 // app.use('/api/*', auth.verifyToken);
